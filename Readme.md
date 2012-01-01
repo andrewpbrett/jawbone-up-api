@@ -5,6 +5,6 @@ Work in progress.
 Find out your token:
 
     s = Jawbone::Session.new "you@youremail.com", "yourpassword"
-		s.token # puts your Jawbone UP token
+    s.token # puts your Jawbone UP token
 		
 		
