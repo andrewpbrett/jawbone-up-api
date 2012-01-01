@@ -11,5 +11,11 @@ module Jawbone
         { :service => "nudge", :email => email, :pwd => password }
       @token = json["token"]
     end
+    
+    def feed
+      puts @token
+      json = self.class.get "https://jawbone.com/nudge/api/users/@me/social", :query => 
+        { "after" => "null", "limit" => 100, "_token" => @token }
+    end
   end
 end
