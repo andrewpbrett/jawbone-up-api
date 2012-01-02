@@ -15,14 +15,17 @@ Your feed in JSON format:
 Average time it takes you to fall asleep: 
 
     s.average_time_to_sleep
-		=> 650.7692307692307
+    => 650.7692307692307
 
 Daily Summary:
 
     summary = s.daily_summary "2011-12-29"
-    summary.steps
+
+    $> summary.steps
     => 13007
-    summary.sleep_quality
+
+    $> summary.sleep_quality
     => 83
-    summary.kilometers
+
+    $> summary.kilometers
     => 16.314
