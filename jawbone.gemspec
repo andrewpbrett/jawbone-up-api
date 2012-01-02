@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.description = %q{A Ruby wrapper for the unofficial Jawbone UP API.}
   gem.email = ['andy@andybrett.com']
   gem.executables = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f)}
-  gem.files = ["lib/jawbone.rb", "lib/session.rb", "lib/sleep.rb"]
+  gem.files = ["lib/jawbone.rb", "lib/session.rb", "lib/sleep.rb", "lib/daily_summary.rb"]
   gem.homepage = 'https://github.com/andrewpbrett/jawbone-up-api'
   gem.name = 'jawbone'
   gem.post_install_message =<<eos

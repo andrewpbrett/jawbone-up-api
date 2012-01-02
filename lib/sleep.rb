@@ -8,17 +8,28 @@ module Jawbone
       @data = data
     end
   
+    # note that these methods are also available in the sleep summary API call
     [:awake, :deep, :light].each do |type|
       define_method "#{type}_sleep" do
         totals[type]
       end
     end
+    
+    def quality
+      @data["quality"]
+    end
+    
+    def duration
+      @data["duration"]
+    end
   
     def time_to_sleep
-      p @data[:full_data][1][0]
-      p @data[:full_data][0][0]
       @data[:full_data][1][0] - @data[:full_data][0][0]
     end  
+    
+    def cycle_changes
+      @data[:full_data].size
+    end
   
     private
   

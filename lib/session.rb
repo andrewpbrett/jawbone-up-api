@@ -38,6 +38,15 @@ module Jawbone
       times.inject{ |sum, el| sum + el }.to_f / times.size # times.average
     end
     
+    # requires date to be in yyyy-mm-dd format
+    def daily_summary date
+      # assumes Pacific Time
+      response = self.class.get "https://jawbone.com/nudge/api/users/@me/healthCredits", { query:
+        { _token: @token, check_levels: 1, eat_goal: 0, sleep_goal: 0, move_goal: 0,
+        timezone: "-28800", date: date } }
+      response["data"]
+    end
+    
   end
   
 end
