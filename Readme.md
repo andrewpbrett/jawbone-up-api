@@ -10,4 +10,8 @@ Find out your token:
 Your feed in JSON format:		
 
     s = Jawbone::Session.new "you@youremail.com", "yourpassword"
-		s.feed
+    s.feed
+
+Average time it takes you to fall asleep: 
+
+    s.average_time_to_sleep
