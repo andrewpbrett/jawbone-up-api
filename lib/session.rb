@@ -8,10 +8,14 @@ module Jawbone
     
     include HTTParty
     
-    def initialize email, password
-      response = self.class.post "https://jawbone.com/user/signin/login", { query:
-        { service: "nudge", email: email, pwd: password } }
-      @token = response["token"]
+    def initialize email, password, token = nil
+      if token
+        @token = token
+      else
+        response = self.class.post "https://jawbone.com/user/signin/login", { query:
+          { service: "nudge", email: email, pwd: password } }
+        @token = response["token"]        
+      end
     end
     
     def feed

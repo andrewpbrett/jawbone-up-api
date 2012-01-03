@@ -7,6 +7,10 @@ Find out your token:
     s = Jawbone::Session.new "you@youremail.com", "yourpassword"
     s.token # puts your Jawbone UP token
 
+If you already have the token, you can create a session like so:
+
+    s = Jawbone::Session.new nil, nil, "your_token"
+
 Your feed in JSON format:		
 
     s = Jawbone::Session.new "you@youremail.com", "yourpassword"
