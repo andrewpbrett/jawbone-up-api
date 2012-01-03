@@ -25,5 +25,5 @@ eos
   gem.require_paths = ['lib']
   gem.summary = %q{Jawbone UP API wrapper}
   gem.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
-  gem.version = 0.2
+  gem.version = 0.2.1
 end
