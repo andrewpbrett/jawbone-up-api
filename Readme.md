@@ -23,7 +23,7 @@ Average time it takes you to fall asleep:
 
 Daily Summary:
 
-    summary = s.daily_summary "2011-12-29"
+    summary = Jawbone::DailySummary.new(s.daily_summary "2011-12-29")
 
     $> summary.steps
     => 13007

@@ -25,6 +25,7 @@ module Jawbone
     end
     
     def sleep_quality
+      return nil if @data["sleep_summary"]["sleeps"].empty?
       sleeps = @data["sleep_summary"]["sleeps"].map { |s| [s["details"]["duration"], s["details"]["quality"]]}
       sleeps.sort_by { |s| s[0] }.first[1]
     end
