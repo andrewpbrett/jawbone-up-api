@@ -8,6 +8,10 @@ module Jawbone
     
     include HTTParty
     
+    def self.new_from_token token
+      Jawbone::Session.new nil, nil, token
+    end    
+    
     def initialize email, password, token = nil
       if token
         @token = token

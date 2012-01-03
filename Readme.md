@@ -9,7 +9,7 @@ Find out your token:
 
 If you already have the token, you can create a session like so:
 
-    s = Jawbone::Session.new nil, nil, "your_token"
+    s = Jawbone::Session.new_from_token "your_token"
 
 Your feed in JSON format:		
 
