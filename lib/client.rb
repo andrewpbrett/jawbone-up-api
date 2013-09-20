@@ -68,6 +68,16 @@ module Jawbone
       response.parsed_response
     end
 
+    def create_workout(params)
+      response = self.class.post "https://jawbone.com/nudge/api/v.1.0/users/@me/workouts",
+        { :headers => 
+          { "Authorization" => "Bearer #{token}", 
+            "Content-Type" => "application/x-www-form-urlencoded" },
+          :body => params
+        }
+      response.parsed_response
+    end
+
     def workout_graph(workout_id)
       response = self.class.get "https://jawbone.com/nudge/api/users/@me/workouts/#{workout_id}/image", 
         { :headers => { "Authorization" => "Bearer #{token}" } }
@@ -110,6 +120,16 @@ module Jawbone
       response.parsed_response
     end
 
+    def create_meal(params)
+      response = self.class.post "https://jawbone.com/nudge/api/v.1.0/users/@me/meals",
+        { :headers => 
+          { "Authorization" => "Bearer #{token}", 
+            "Content-Type" => "application/x-www-form-urlencoded" },
+          :body => params
+        }
+      response.parsed_response
+    end
+
     def meal(meal_id)
       response = self.class.get "https://jawbone.com/nudge/api/users/@me/meals/#{meal_id}", 
         { :headers => { "Authorization" => "Bearer #{token}" } }
@@ -119,6 +139,16 @@ module Jawbone
     def body_events
       response = self.class.get "https://jawbone.com/nudge/api/users/@me/body_events", 
         { :headers => { "Authorization" => "Bearer #{token}" } }
+      response.parsed_response
+    end
+
+    def create_body_event(params)
+      response = self.class.post "https://jawbone.com/nudge/api/v.1.0/users/@me/body_events",
+        { :headers => 
+          { "Authorization" => "Bearer #{token}", 
+            "Content-Type" => "application/x-www-form-urlencoded" },
+          :body => params
+        }
       response.parsed_response
     end
 
@@ -134,6 +164,16 @@ module Jawbone
       response.parsed_response
     end
 
+    def create_cardiac_event(params)
+      response = self.class.post "https://jawbone.com/nudge/api/v.1.0/users/@me/cardiac_events",
+        { :headers => 
+          { "Authorization" => "Bearer #{token}", 
+            "Content-Type" => "application/x-www-form-urlencoded" },
+          :body => params
+        }
+      response.parsed_response
+    end
+
     def cardiac_event(event_id)
       response = self.class.get "https://jawbone.com/nudge/api/users/@me/cardiac_event/#{event_id}", 
         { :headers => { "Authorization" => "Bearer #{token}" } }
@@ -146,9 +186,29 @@ module Jawbone
       response.parsed_response
     end
 
+    def create_generic_event(params)
+      response = self.class.post "https://jawbone.com/nudge/api/v.1.0/users/@me/generic_events",
+        { :headers => 
+          { "Authorization" => "Bearer #{token}", 
+            "Content-Type" => "application/x-www-form-urlencoded" },
+          :body => params
+        }
+      response.parsed_response
+    end
+
     def mood
       response = self.class.get "https://jawbone.com/nudge/api/users/@me/mood", 
         { :headers => { "Authorization" => "Bearer #{token}" } }
+      response.parsed_response
+    end
+
+    def create_mood(params)
+      response = self.class.post "https://jawbone.com/nudge/api/v.1.0/users/@me/mood",
+        { :headers => 
+          { "Authorization" => "Bearer #{token}", 
+            "Content-Type" => "application/x-www-form-urlencoded" },
+          :body => params
+        }
       response.parsed_response
     end
 
