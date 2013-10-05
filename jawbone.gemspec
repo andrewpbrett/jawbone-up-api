@@ -8,6 +8,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'simplecov'
   gem.add_development_dependency 'yard'
   gem.authors = ["Andy Brett"]
+  gem.license = 'MIT'
   gem.description = %q{A Ruby wrapper for the Jawbone UP API.}
   gem.email = ['andy@andybrett.com']
   gem.executables = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f)}
