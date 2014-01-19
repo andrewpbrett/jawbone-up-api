@@ -27,6 +27,10 @@ module Jawbone
       get_helper("users/@me/trends", params)
     end
 
+    def disconnect
+      delete_helper("users/@me/PartnerAppMembership")
+    end
+
     base_strings = ["move", "body_event", "workout", "sleep", "meal", 
       "cardiac_event", "generic_event", "mood"]
 
@@ -65,6 +69,16 @@ module Jawbone
           { "Authorization" => "Bearer #{token}", 
             "Content-Type" => "application/x-www-form-urlencoded" },
           :body => params
+        }
+      response.parsed_response
+    end
+
+    def delete_helper(path)
+      path = "/" + path unless path[0] == '/'
+      url = BASE_URL + path
+      response = self.class.delete url,
+        { :headers => 
+          { "Authorization" => "Bearer #{token}" }
         }
       response.parsed_response
     end

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 Gem::Specification.new do |gem|
-  gem.add_dependency 'httparty', '~> 0.11.0'
+  gem.add_dependency 'httparty', ['>= 0.11.0', '<= 0.12.0']
   gem.add_development_dependency 'json'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
@@ -20,5 +20,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.summary = %q{Jawbone UP API wrapper}
   gem.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
-  gem.version = "0.4"
+  gem.version = "0.4.1"
 end
