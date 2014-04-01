@@ -59,6 +59,10 @@ module Jawbone
       end
     end
 
+    define_method "moods" do |*args|
+      get_helper("users/@me/mood", args.first || {})
+    end
+
     private
 
     def post_helper(path, params)
