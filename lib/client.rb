@@ -32,7 +32,7 @@ module Jawbone
     end
 
     base_strings = ["move", "body_event", "workout", "sleep", "meal", 
-      "cardiac_event", "generic_event", "mood"]
+      "cardiac_event", "generic_event"]
 
     base_strings.each do |base|
       plural = base + "s"
@@ -61,6 +61,10 @@ module Jawbone
 
     define_method "moods" do |*args|
       get_helper("users/@me/mood", args.first || {})
+    end
+
+    define_method "mood" do |id|
+      get_helper("mood/#{id}", {})
     end
 
     private
