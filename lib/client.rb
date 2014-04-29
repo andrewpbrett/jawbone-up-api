@@ -1,20 +1,20 @@
 require 'httparty'
 
 module Jawbone
-  
+
   class Client
-    
+
     attr_accessor :token
 
     API_VERSION = "1.0"
     BASE_URL = "https://jawbone.com/nudge/api/v.1.0"
-    
+
     include HTTParty
-    
+
     def initialize(token)
       @token = token
     end
-    
+
     def user
       get_helper("users/@me", {})
     end
@@ -31,7 +31,11 @@ module Jawbone
       delete_helper("users/@me/PartnerAppMembership")
     end
 
-    base_strings = ["move", "body_event", "workout", "sleep", "meal", 
+    def refresh_token(client_secret)
+      post_helper("users/@me/refreshToken", {secret: client_secret})
+    end
+
+    base_strings = ["move", "body_event", "workout", "sleep", "meal",
       "cardiac_event", "generic_event"]
 
     base_strings.each do |base|
@@ -40,7 +44,7 @@ module Jawbone
       define_method plural do |*args|
         get_helper("users/@me/#{plural}", args.first || {})
       end
-      
+
       define_method base do |id|
         get_helper("#{plural}/#{id}", {})
       end
@@ -73,8 +77,8 @@ module Jawbone
       path = "/" + path unless path[0] == '/'
       url = BASE_URL + path
       response = self.class.post url,
-        { :headers => 
-          { "Authorization" => "Bearer #{token}", 
+        { :headers =>
+          { "Authorization" => "Bearer #{token}",
             "Content-Type" => "application/x-www-form-urlencoded" },
           :body => params
         }
@@ -85,7 +89,7 @@ module Jawbone
       path = "/" + path unless path[0] == '/'
       url = BASE_URL + path
       response = self.class.delete url,
-        { :headers => 
+        { :headers =>
           { "Authorization" => "Bearer #{token}" }
         }
       response.parsed_response
@@ -96,13 +100,13 @@ module Jawbone
       url = BASE_URL + path
       stringified_params = params.collect do |k, v|
         "#{k}=#{v}"
-      end.sort * '&' 
+      end.sort * '&'
       full_url = url + "?" + stringified_params
-      response = self.class.get full_url, 
+      response = self.class.get full_url,
         { :headers => { "Authorization" => "Bearer #{token}" } }
       response.parsed_response
     end
-    
+
   end
-  
+
 end
