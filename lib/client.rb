@@ -45,13 +45,15 @@ module Jawbone
     # basic functions.
     #
     def retrieve_all_items(batch)
-      unless batch.is_a?(Hash) && batch.has_key?("data") && batch["data"].is_a?(Hash) && batch["data"].has_key?("items") && batch["data"].has_key?("links") && batch["data"]["links"].has_key?("next")
+      unless batch.is_a?(Hash) && batch.has_key?("data") && batch["data"].is_a?(Hash) && batch["data"].has_key?("items")
         raise "jawbone_up_api retrieve_all_items() was given a bad batch: #{batch}"
       end
 
       items = batch["data"]["items"]
-
       while batch["data"].has_key?("links") do
+        unless batch["data"]["links"].has_key?("next")
+          raise "jawbone_up_api retrieve_all_items() has links but no next: #{batch}"
+        end
         batch = get_path(batch["data"]["links"]["next"])
         items += batch["data"]["items"]
       end
