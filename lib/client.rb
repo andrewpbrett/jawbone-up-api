@@ -27,6 +27,10 @@ module Jawbone
       get_helper("users/@me/trends", params)
     end
 
+    def bandevents(params={})
+      get_helper("users/@me/bandevents", params)
+    end
+
     def disconnect
       delete_helper("users/@me/PartnerAppMembership")
     end
