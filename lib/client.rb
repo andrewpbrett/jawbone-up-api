@@ -18,6 +18,10 @@ module Jawbone
     def user
       get_helper("users/@me", {})
     end
+  
+    def goals
+      get_helper("users/@me/goals", {})
+    end
 
     def friends
       get_helper("users/@me/friends", {})
